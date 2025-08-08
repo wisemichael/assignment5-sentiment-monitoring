@@ -1,0 +1,20 @@
+FROM python:3.9-slim
+
+# Sets the working directory in the container.
+WORKDIR /app
+
+# Copies the requirements file and the streamlit dashboar.
+COPY ./requirements_streamlit.txt .
+COPY ./monitoring/dashboard.py .
+
+# Test data from IMDB dataset.
+COPY ./IMDB_Dataset.csv .
+
+# Installs necessary packages.
+RUN pip install --no-cache-dir -r requirements_streamlit.txt
+
+# Create the logs directory.
+RUN mkdir -p /logs
+
+# The command to run the Streamlit app.
+CMD ["streamlit", "run", "dashboard.py", "--server.port", "8501", "--server.address", "0.0.0.0"]

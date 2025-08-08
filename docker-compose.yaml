@@ -1,0 +1,18 @@
+services:
+  fastapi_service:
+    build:
+      context: .
+      dockerfile: Dockerfile.fastapi
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/app/logs
+
+  streamlit_dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.monitoring
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./logs:/app/logs
