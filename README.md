@@ -19,23 +19,22 @@ This repo contains two Dockerized services:
 ## Quickstart
 
 ```bash
-git clone https://github.com/your-username/assignment5-sentiment-monitoring.git
+git clone https://github.com/wisemichael/assignment5-sentiment-monitoring.git
 cd assignment5-sentiment-monitoring
 
 # Build both containers
 make build
 
-# Start the stack
+# Start FastAPI + Streamlit (in one terminal)
 make run
+
+# In another terminal, run evaluation:
+python evaluate.py --url http://localhost:8000/predict --file test.json
 
 # View logs (optional)
 make logs
 
 ### Evaluate your API
-
-```bash
-# Run your local API (in another shell)
-make run
 
 # In one line, loop through test.json and print accuracy:
 python evaluate.py --url http://localhost:8000/predict --file test.json
