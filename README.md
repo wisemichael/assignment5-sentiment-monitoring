@@ -30,3 +30,17 @@ make run
 
 # View logs (optional)
 make logs
+
+### Evaluate your API
+
+```bash
+# Run your local API (in another shell)
+make run
+
+# In one line, loop through test.json and print accuracy:
+python evaluate.py --url http://localhost:8000/predict --file test.json
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"text":"I love this movie!","true_sentiment":"positive"}' \
+  http://localhost:8000/predict
